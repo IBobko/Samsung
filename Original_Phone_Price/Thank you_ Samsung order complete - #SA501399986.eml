@@ -1,0 +1,360 @@
+Delivered-To: iibobko@gmail.com
+Received: by 2002:a05:7301:3c89:b0:146:453b:ce0f with SMTP id kk9csp1205908dyb;
+        Fri, 25 Oct 2024 12:52:14 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IEnkn0HShummxYNaYfOiCnPOLARFNqiXvGtDta+ggrR3qEbrV0ddJ2eB2i58jFDvkRkHiC2
+X-Received: by 2002:a17:902:e951:b0:20b:6458:ec83 with SMTP id d9443c01a7336-210c686c57fmr6040935ad.4.1729885934593;
+        Fri, 25 Oct 2024 12:52:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1729885934; cv=none;
+        d=google.com; s=arc-20240605;
+        b=arKi5/BzrEIrT7FSSlpAHR/VBwA5AkKwStWrlWvxMX/+DcEhCv9apJB8XQ5oOaVXzh
+         TTw8KJj0uPmpoVE6pU2J2S7uQGyBi9F1W8oVCoX6ZyXGp2cQq/Z8asMj4PufYs3ULrbz
+         cKwrhATbr8C4ADjWIZK1io90nT45QBXU+j7TZnBqyKM2r4+eW16Vjk0x2xZHNuM8mfLU
+         v/uvlA7RRBBxVCOsOMi4hR+cTi9teb6tVSWj3UB0IDjCVeK8Nc1oQnTzwePE4bi0rPZF
+         LWSVMypQ3tNMwyOezgmnamBffgsfPojbyWyrnyvkKELD/z1Gao6LRL39RNl0JPs2hqDj
+         Cr5Q==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=feedback-id:date:message-id:content-transfer-encoding:mime-version
+         :subject:to:from:dkim-signature;
+        bh=JIIKIZjh8rTPYO0Nk+toWujcv98Inb4XBXso4K/Y7hI=;
+        fh=kqgEWsB1A7y63DA4dB9ItAyzhZ+CtEgN5G90vzJxWp0=;
+        b=Ke69D0YknSvaSnbSNUNBWyrm5Oe/cSUz7BpT6hoEA2W1YW+aGur11w1kBgg6XpmwNx
+         j3jXK+YxiZhXCSbqLKucZQP+OuoAPVQNAKF8L3fId5zPs9FTv/+UcydCrEvKE1migVhi
+         Bof+ycmOS90Zuqv9P++pMuzXp5wRQjnnAL0hwM2uneEscuMUxbSWojFhR+4vLJNLCgZj
+         LU4Pq1Z+TZSVTSNSLPWrol8anxnqr6pmxWAqIl0TOW2InYuvtC9J1o+DDSupFtCOQByM
+         9AeDnRJKLoztBu9AZXPcpQP7LwWahRX/yGQjdgCXzKfT1+OEVas7E/2jVUE4grQekUlm
+         IuQA==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@amazonses.com header.s=7v7vs6w47njt4pimodk5mmttbegzsi6n header.b=gzWtwwVl;
+       spf=pass (google.com: domain of 01010192c53c91f0-b0b49671-0a73-417a-b8cd-48b9ec908ffc-000000@shopping.us.samsung.com designates 54.240.27.221 as permitted sender) smtp.mailfrom=01010192c53c91f0-b0b49671-0a73-417a-b8cd-48b9ec908ffc-000000@shopping.us.samsung.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=samsung.com
+Return-Path: <01010192c53c91f0-b0b49671-0a73-417a-b8cd-48b9ec908ffc-000000@shopping.us.samsung.com>
+Received: from a27-221.smtp-out.us-west-2.amazonses.com (a27-221.smtp-out.us-west-2.amazonses.com. [54.240.27.221])
+        by mx.google.com with ESMTPS id d9443c01a7336-210bc01c08asi20467265ad.568.2024.10.25.12.52.14
+        for <iibobko@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 25 Oct 2024 12:52:14 -0700 (PDT)
+Received-SPF: pass (google.com: domain of 01010192c53c91f0-b0b49671-0a73-417a-b8cd-48b9ec908ffc-000000@shopping.us.samsung.com designates 54.240.27.221 as permitted sender) client-ip=54.240.27.221;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@amazonses.com header.s=7v7vs6w47njt4pimodk5mmttbegzsi6n header.b=gzWtwwVl;
+       spf=pass (google.com: domain of 01010192c53c91f0-b0b49671-0a73-417a-b8cd-48b9ec908ffc-000000@shopping.us.samsung.com designates 54.240.27.221 as permitted sender) smtp.mailfrom=01010192c53c91f0-b0b49671-0a73-417a-b8cd-48b9ec908ffc-000000@shopping.us.samsung.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=samsung.com
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+	s=7v7vs6w47njt4pimodk5mmttbegzsi6n; d=amazonses.com; t=1729885934;
+	h=From:To:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-ID:Date:Feedback-ID;
+	bh=tdMPqbMeCN1/fAx2N69tVQ0C9Tle8AGN8WTpuWbiGgQ=;
+	b=gzWtwwVlHj3FTf6a45pVtXV7R2XJO0h4htFCQBgYZowX/If/+H79kHnjrO0zVtXv
+	KbVn4sRQoak74OtprpxYNeqvQH0KyK9Dr59pHeetcrC0n/PajXG+vLGky5oYk7tbN5W
+	btIt/hVlO7Eym4aVhfstQ/WSIF2l1i+zaGOq/G3g=
+From: orders@shopping.us.samsung.com
+To: iibobko@gmail.com
+Subject: Thank you: Samsung order complete - #SA501399986
+MIME-Version: 1.0
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+Message-ID: <01010192c53c91f0-b0b49671-0a73-417a-b8cd-48b9ec908ffc-000000@us-west-2.amazonses.com>
+Date: Fri, 25 Oct 2024 19:52:14 +0000
+Feedback-ID: ::1.us-west-2.rMoElget/gZAuBCqwqMn02adV0tcHQagnR3llR34rME=:AmazonSES
+X-SES-Outgoing: 2024.10.25-54.240.27.221
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.=
+w3.org/TR/html4/loose.dtd"> <html xmlns=3D"http://www.w3.org/1999/xhtml" xm=
+lns:v=3D"urn:schemas-microsoft-com:vml" xmlns:o=3D"urn:schemas-microsoft-co=
+m:office:office"> <head> <meta http-equiv=3D"Content-Type" content=3D"text/=
+html; charset=3Dutf-8" /> <meta name=3D"viewport" content=3D"width=3Ddevice=
+-width, initial-scale=3D1" /> <meta http-equiv=3D"X-UA-Compatible" content=
+=3D"IE=3Dedge" /> <meta name=3D"robots" content=3D"noindex, nofollow"> <tit=
+le></title> <!-- TRADE IN STYLE START --> <style type=3D"text/css"> @font-f=
+ace { font-family: 'SamsungOneLatinWeb'; src: url("http://www.samsung.com/u=
+s/fonts/SamsungOne/SamsungOne-400.woff2") format("woff2"), url("http://www.=
+samsung.com/us/fonts/SamsungOne/SamsungOne-400.woff") format("woff"), url("=
+http://www.samsung.com/us/fonts/SamsungOne/SamsungOne-400.eot"), url("http:=
+//www.samsung.com/us/fonts/SamsungOne/SamsungOne-400.svg#SamsungOne") forma=
+t("svg"); font-weight: 400; font-style: normal; } @font-face { font-family:=
+ 'SamsungOneLatinWeb'; src: url("http://www.samsung.com/us/fonts/SamsungOne=
+/SamsungOne-700.woff2") format("woff2"), url("http://www.samsung.com/us/fon=
+ts/SamsungOne/SamsungOne-700.woff") format("woff"), url("http://www.samsung=
+.com/us/fonts/SamsungOne/SamsungOne-700.eot"), url("http://www.samsung.com/=
+us/fonts/SamsungOne/SamsungOne-700.svg#SamsungOne") format("svg"); font-wei=
+ght: 700; font-style: bold; } @font-face { font-family: 'SamsungSansSharp';=
+ src: url("http://www.samsung.com/us/fonts/SamsungSharpSans-Bold.woff?lfwv7=
+") format("woff"), url("http://www.samsung.com/us/fonts/SamsungSharpSans-Bo=
+ld.eot?lfwv7"), url("http://www.samsung.com/us/fonts/SamsungSharpSans-Bold.=
+eot?lfwv7#iefix") format("embedded-opentype"), url("http://www.samsung.com/=
+us/fonts/SamsungSharpSans-Bold.svg?lfwv7#SamsungSharpSans") format("svg"); =
+font-weight: 700; font-style: bold; } body, table, td, a { -webkit-text-siz=
+e-adjust: 100%; -ms-text-size-adjust: 100%; } table, td { mso-table-lspace:=
+ 0pt; mso-table-rspace: 0pt; } img { border: 0; height: auto; line-height: =
+100%; outline: none; text-decoration: none; -ms-interpolation-mode: bicubic=
+; } table { border-collapse: collapse !important; } body { font-family: 'Mo=
+ntserrat', Arial, sans-serif; height: 100% !important; margin: 0 !important=
+; padding: 0 !important; width: 100% !important; } div[style*=3D"margin: 16=
+px 0;"] { margin: 0 !important; } a[x-apple-data-detectors] { color: inheri=
+t !important; text-decoration: none !important; font-size: inherit !importa=
+nt; font-family: inherit !important; font-weight: inherit !important; line-=
+height: inherit !important; } </style> <!--[if mso]> <style type=3D"text/cs=
+s"> .body-text { font-family: Arial, sans-serif !important; } </style> <![e=
+ndif]--> <!--[if gte mso 9]> <xml> <o:OfficeDocumentSettings> <o:AllowPNG/>=
+ <o:PixelsPerInch>96</o:PixelsPerInch> </o:OfficeDocumentSettings> </xml> <=
+![endif]--> <!-- TRADE IN STYLE END --> </head> <body style=3D"margin:0; pa=
+dding:0; font-family: 'SamsungOneLatinWeb', Tahoma, Arial, sans-serif;">   =
+    <table width=3D"100%" height=3D"100%" cellpadding=3D"0" cellspacing=3D"=
+0" border=3D"0" bgcolor=3D"#ffffff"> <tr> <td width=3D"100%" valign=3D"top"=
+ align=3D"center" style=3D"padding-top: 30px"> <div style=3D"display: none;=
+ font-size: 1px; line-height: 1px; max-height: 0px; max-width: 0px; opacity=
+: 0; overflow: hidden;">Thank you, your order is complete</div> <img src=3D=
+"https://us.ecom.samsung.com/v4/partner/mail/89608948-9528-4285-b513-acb8e4=
+5e0afd/pixel.png"> <!-- TRADE IN HEADER <SAMSUNG IMG HEADER> START --> <tab=
+le cellspacing=3D"0" cellpadding=3D"0" border=3D"0" width=3D"100%" style=3D=
+"max-width: 640px; width: 100%"> <tr> <td style=3D"padding: 20px 15px; back=
+ground-color: #ffffff; text-align: left;"><img src=3D"http://image-us.samsu=
+ng.com/SamsungUS/ecom-email/logo-samsung-black.png" width=3D"220" alt=3D"SA=
+MSUNG" style=3D"border: 0;width: 220px;"></td> </tr> </table> <!-- TRADE IN=
+ HEADER <SAMSUNG IMG HEADER> END --> <table cellpadding=3D"0" cellspacing=
+=3D"0" border=3D"0" width=3D"100%" style=3D"max-width: 640px; width: 100%">=
+ <tr> <td align=3D"center" style=3D"text-align: center; padding: 30px 15px;=
+border-bottom: 2px solid #d6d6d6"> <table cellpadding=3D"0" cellspacing=3D"=
+0" border=3D"0" width=3D"100%" style=3D"max-width: 640px; width: 100%"> <tr=
+> <td align=3D"left" valign=3D"middle" style=3D"padding-right: 10px;"> <p s=
+tyle=3D"padding: 0; margin: 0; max-width: 98%; font-family: 'SamsungOneLati=
+nWeb', Tahoma, Arial, sans-serif; font-size: 32px; line-height: 40px; font-=
+weight: bold;"> Items picked up <br> <p style=3D"font-weight: normal;">Your=
+ order has been fulfilled.</p> </p> </td> <td align=3D"right" valign=3D"mid=
+dle" width=3D"120"> <img src=3D"http://image-us.samsung.com/SamsungUS/ecom-=
+email/icon-store-pickup-available.png" width=3D"128" style=3D"border: 0; wi=
+dth: 128px;" alt=3D"" /> </td> </tr> </table> </td> </tr> <tr>  <td style=
+=3D"padding: 0 15px 30px; font-family: 'SamsungOneLatinWeb', Arial, Tahoma,=
+ sans-serif; font-size: 16px; line-height: 24px; "> <p class=3D"body-text" =
+style=3D"padding: 0; margin: 20px 0 20px; font-family: 'SamsungOneLatinWeb'=
+, Arial, Tahoma, sans-serif; font-size: 16px; line-height: 26px; color: #36=
+3636;">Dear Igor,</p> <p class=3D"body-text" style=3D"padding: 0; margin: 0=
+ 0 20px; font-family: 'SamsungOneLatinWeb', Arial, Tahoma, sans-serif; font=
+-size: 16px; line-height: 26px; color: #363636;"> One or more items from yo=
+ur order  <a href=3D"https://yxdf4kyd.r.us-west-2.awstrack.me/L0/https:%2F%=
+2Fwww.samsung.com%2Fus%2Fweb%2Fsearch-orders%3ForderId=3DSA501399986%26encr=
+yptedEmailId=3DGP4zB%252BlpTitYZoYzns1pwCiJ7HMves2eIM86qhlesMe05XhRfChJy42v=
+0sHZGjwv%26encryptedPassword=3DeoD%252FBgfZ6Xca4aTHbrnQ0z%252Bzo3w4INzJeayE=
+9cjnmNduEQO4d0m0kBSiWNyH9AjVwLTtXAuDQyI7qGvgcfVNG%252BNZg9SEqZqAQMV4YU8xmHz=
+Em4FT0xVDLoCyIDhxN30Wqd7XFCpieEaUBIvuTqToSKu2lQy1FGNLmG8jBkZLHmgrhwVS3UOV3g=
+uhTuU9WyQ4DpWTUwjanPNIbGvOjc9j%252BQRYJLJGyTDzY9cGVd24qZRZI0Jukt5UavDoTXFk4=
+ohiLTPRKLoqUXKwJ6UT9Y3g0m4BuCRdGGW9XmFuz%252BBtYifFp7wBH1%252BqA7%252FXeNdI=
+jHmF%252BKuABIv%252BNSmQ6OXKqoZpJw%253D%253D%26zipCodeShipping=3D95125%26ci=
+d=3Deml-ecm-trnx-LineItemPickedUp/1/01010192c53c91f0-b0b49671-0a73-417a-b8c=
+d-48b9ec908ffc-000000/l1rHGp3da6x9NixzmRf20Ndk4Ug=3D398" style=3D"color: #2=
+83794; font-weight: bold; text-decoration: none;">#SA501399986</a> picked u=
+p from Best Buy The Plant at 10/25/2024 12:46PM. If you received this email=
+ in error or did not pickup item(s), please contact <a href=3D"https://yxdf=
+4kyd.r.us-west-2.awstrack.me/L0/https:%2F%2Fwww.samsung.com%2Fus%2Fsupport%=
+2F%3Fcid=3Deml-ecm-trnx-LineItemPickedUp/1/01010192c53c91f0-b0b49671-0a73-4=
+17a-b8cd-48b9ec908ffc-000000/wT-rYzfsoHIOtiSTuRTDp2EL1JQ=3D398" style=3D"fo=
+nt-weight: bold; color: #283794; text-decoration: none;">Samsung Customer S=
+upport</a> immediately. <br><br> <span class=3D"body-text" style=3D"padding=
+: 0; margin: 20px 0 20px; font-family: 'SamsungOneLatinWeb', Arial, Tahoma,=
+ sans-serif; font-size: 16px; line-height: 26px; color: #283794; font-weigh=
+t: bold;"> RATE YOUR STORE PICKUP EXPERIENCE </span><br><br> <a href=3D"htt=
+ps://yxdf4kyd.r.us-west-2.awstrack.me/L0/https:%2F%2Fsurvey3.medallia.com%2=
+F%3Fdelivery%26c=3D1%26lng=3Den%26type=3D6%26dc=3D1%26oid=3DSA501399986/1/0=
+1010192c53c91f0-b0b49671-0a73-417a-b8cd-48b9ec908ffc-000000/OXHlwVSWrjgQnpU=
+bytjpAmhKs9E=3D398"> <img src=3D"http://image-us.samsung.com/SamsungUS/ecom=
+-email/icon-stars.png" width=3D"267" style=3D"width: 267px; border: 0;" alt=
+=3D""> </a> </p>  <p style=3D"margin: 0; padding: 20px 0 0;"> <a href=3D"ht=
+tps://yxdf4kyd.r.us-west-2.awstrack.me/L0/https:%2F%2Fwww.samsung.com%2Fus%=
+2Fweb%2Fsearch-orders%3ForderId=3DSA501399986%26encryptedEmailId=3DGP4zB%25=
+2BlpTitYZoYzns1pwCiJ7HMves2eIM86qhlesMe05XhRfChJy42v0sHZGjwv%26encryptedPas=
+sword=3DeoD%252FBgfZ6Xca4aTHbrnQ0z%252Bzo3w4INzJeayE9cjnmNduEQO4d0m0kBSiWNy=
+H9AjVwLTtXAuDQyI7qGvgcfVNG%252BNZg9SEqZqAQMV4YU8xmHzEm4FT0xVDLoCyIDhxN30Wqd=
+7XFCpieEaUBIvuTqToSKu2lQy1FGNLmG8jBkZLHmgrhwVS3UOV3guhTuU9WyQ4DpWTUwjanPNIb=
+GvOjc9j%252BQRYJLJGyTDzY9cGVd24qZRZI0Jukt5UavDoTXFk4ohiLTPRKLoqUXKwJ6UT9Y3g=
+0m4BuCRdGGW9XmFuz%252BBtYifFp7wBH1%252BqA7%252FXeNdIjHmF%252BKuABIv%252BNSm=
+Q6OXKqoZpJw%253D%253D%26zipCodeShipping=3D95125%26cid=3Deml-ecm-trnx-LineIt=
+emPickedUp/2/01010192c53c91f0-b0b49671-0a73-417a-b8cd-48b9ec908ffc-000000/F=
+AbnSUcHN3lG4lNDIZOGA2M65yw=3D398"><img src=3D"http://image-us.samsung.com/S=
+amsungUS/ecom-email/btn-manage-order.png" width=3D"230" style=3D"width: 230=
+px; border: 0;" alt=3D"Manage Order"></a> </p>  </td>  </tr> </table> <tabl=
+e bgcolor=3D"#f5f5f5" cellpadding=3D"0" cellspacing=3D"0" border=3D"0" widt=
+h=3D"100%" style=3D"max-width: 640px; width: 100%"> <tr> <td align=3D"left"=
+ style=3D"text-align: left; padding: 10px; background-color: #f5f5f5; font-=
+family: 'SamsungOneLatinWeb', Arial, Tahoma, sans-serif; font-size: 18px; l=
+ine-height: 28px; color: #363636; font-weight: bold;">ORDER DETAILS</td> </=
+tr> </table>                 <table cellpadding=3D"0" cellspacing=3D"0" bor=
+der=3D"0" width=3D"100%" style=3D"max-width: 640px; width: 100%">     <tr> =
+<td width=3D"120" valign=3D"top" align=3D"left" style=3D" text-align: left;=
+ padding: 20px 0px 0px 0px; width: 120px; border-top: 1px solid #d6d6d6"> <=
+img src=3D"https://image-us.samsung.com/us/smartphones/galaxy-s24/all-galle=
+ry/01_E3_TitaniumGray_Lockup_1600x1200.jpg?$default-400-jpg$" style=3D"bord=
+er: 0; width: 110px;" border=3D"0" alt=3D"" width=3D"110"> </td> <td valign=
+=3D"top" align=3D"left" style=3D" text-align: left; padding: 20px 15px 0px =
+0px;border-top: 1px solid #d6d6d6"> <p class=3D"body-text" style=3D"text-al=
+ign: left; padding: 0 0 5px 0; margin: 0; font-family: 'SamsungOneLatinWeb'=
+, Arial, Tahoma, sans-serif; font-size: 16px; line-height: 18px; color: #36=
+3636; font-weight: bold;">Galaxy S24 Ultra 512GB (Unlocked)</p> <p class=3D=
+"body-text" style=3D"text-align: left; padding: 0; margin: 0 0 10px 0; font=
+-family: 'SamsungOneLatinWeb', Arial, Tahoma, sans-serif; font-size: 14px; =
+line-height: 18px; color: #363636;"> <a href=3D"https://yxdf4kyd.r.us-west-=
+2.awstrack.me/L0/https:%2F%2Fwww.samsung.com%2Fus%2Fsmartphones%2Fgalaxy-s2=
+4-ultra%2Fbuy%2Fgalaxy-s24-ultra-512gb-unlocked-sm-s928uztfxaa%3Fcid=3Deml-=
+ecm-trnx-LineItemPickedUp/1/01010192c53c91f0-b0b49671-0a73-417a-b8cd-48b9ec=
+908ffc-000000/FHtGrF9YPYN0e7Th5KppTno2Lzo=3D398" style=3D" color: #363636; =
+text-decoration: none"> SM-S928UZTFXAA</a> </p>  <p class=3D"body-text" sty=
+le=3D"text-align: left; padding: 0; margin: 0 0 10px; font-family: 'Samsung=
+OneLatinWeb', Arial, Tahoma, sans-serif; font-size: 14px; line-height: 18px=
+; color: #363636;">QTY: <span style=3D" font-weight: bold;">1</span> </p>  =
+   <p class=3D"body-text" style=3D"text-align: left; padding: 0; margin: 0 =
+0 10px; font-family: 'SamsungOneLatinWeb', Arial, Tahoma, sans-serif; font-=
+size: 14px; line-height: 18px; color: #363636;">PRICE:  <span style=3D" col=
+or: #d01d1b">  $1144.99  </span>   <span style=3D"text-decoration: line-thr=
+ough;">$1419.99</span>  </p>   <p class=3D"body-text" style=3D"text-align: =
+left; padding: 0; margin: 0 0 10px; font-family: 'SamsungOneLatinWeb', Aria=
+l, Tahoma, sans-serif; font-size: 14px; line-height: 18px; color: #969696;"=
+> In-store prices and promotions may differ from online prices. Excludes ta=
+xes. </p>    </td> </tr> <!-- Samsung reward points starts here -->   <!-- =
+reward points ends here --> <tr> <td width=3D"120" valign=3D"top" align=3D"=
+left" style=3D" text-align: left; padding: 0px 0px 0px 0px; border: 0px"></=
+td> <td valign=3D"top" align=3D"left" style=3D" text-align: left; padding: =
+0px 15px 0px 0px; border: 0px">   </td> </tr>      </table> <table bgcolor=
+=3D"#f5f5f5" cellpadding=3D"0" cellspacing=3D"0" border=3D"0" width=3D"100%=
+" style=3D"max-width: 640px; width: 100%; margin-top: 20px"> <tr> <td align=
+=3D"left" style=3D"text-align: left; padding: 10px; background-color: #f5f5=
+f5; font-family: 'SamsungOneLatinWeb', Arial, Tahoma, sans-serif; font-size=
+: 16px; line-height: 26px; color: #363636; border-bottom: 2px solid #d6d6d6=
+; font-weight: bold;">STORE LOCATION DETAILS</td> </tr> </table> <table bgc=
+olor=3D"#f5f5f5" cellpadding=3D"0" cellspacing=3D"0" border=3D"0" width=3D"=
+100%" style=3D"max-width: 640px; width: 100%; background-color: #f5f5f5"> <=
+tr> <td width=3D"35%" valign=3D"top" style=3D"padding: 10px 15px;"> <p clas=
+s=3D"body-text" style=3D"text-align: left; padding: 0; margin: 0px; font-fa=
+mily: 'SamsungOneLatinWeb', Arial, Tahoma, sans-serif; font-size: 14px; lin=
+e-height: 22px; color: #363636;">Store Address</p> </td> <td width=3D"65%" =
+valign=3D"top" style=3D"padding: 10px 15px;"> <p class=3D"body-text" style=
+=3D"text-align: left; padding: 0; margin: 0px; font-family: 'SamsungOneLati=
+nWeb', Arial, Tahoma, sans-serif; font-size: 14px; line-height: 18px; color=
+: #363636;"> <strong style=3D"font-weight: bold;"> Best Buy The Plant </str=
+ong><br> 181 Curtner Ave,  <br>San Jose, CA 95125<br><img src=3D"http://ima=
+ge-us.samsung.com/SamsungUS/ecom-email/icon-phone.png" style=3D"border: 0; =
+width: 12px; vertical-align: middle;" width=3D"12" alt=3D""> 408-297-0701 <=
+/p>  <p class=3D"body-text" style=3D"text-align: left; padding: 0; margin: =
+10px 0 0px; font-family: 'SamsungOneLatinWeb', Arial, Tahoma, sans-serif; f=
+ont-size: 12px; line-height: 18px; color: #363636;"> <strong>STORE HOURS</s=
+trong><br>   <strong style=3D"font-weight: bold;">Mon-Sat:</strong> 10:00 a=
+m - 08:00 pm<br>    <strong style=3D"font-weight: bold;">Sun:</strong> 11:0=
+0 am - 07:00 pm<br>   </p>  </td> </tr> <tr> <td width=3D"35%" valign=3D"to=
+p" style=3D"padding: 10px 15px;"> <p class=3D"body-text" style=3D"text-alig=
+n: left; padding: 0; margin: 0px; font-family: 'SamsungOneLatinWeb', Arial,=
+ Tahoma, sans-serif; font-size: 14px; line-height: 22px; color: #363636;">P=
+ickup Contact</p> </td> <td width=3D"65%" valign=3D"top" style=3D"padding: =
+10px 15px;"> <p class=3D"body-text" style=3D"text-align: left; padding: 0; =
+margin: 0px; font-family: 'SamsungOneLatinWeb', Arial, Tahoma, sans-serif; =
+font-size: 14px; line-height: 18px; color: #363636;"> <strong style=3D"font=
+-weight: bold;"> Igor, Bobko </strong><br> 669 350 6323<br> iibobko@gmail.c=
+om</p> </td> </tr> </table>  <table cellpadding=3D"0" cellspacing=3D"0" bor=
+der=3D"0" width=3D"100%" style=3D"max-width: 640px; width: 100%;"> <tr> <td=
+ style=3D"border-bottom: 2px solid #c3c1c1"> <p class=3D"body-text" style=
+=3D"padding: 0; margin: 10px 0 20px; font-family: 'SamsungOneLatinWeb', Ari=
+al, Tahoma, sans-serif; font-size: 16px; line-height: 26px; color: #363636;=
+"> For any returns, please bring items back to Best Buy The Plant with the =
+original packaging. For more information, please refer to the <a href=3D"ht=
+tps://yxdf4kyd.r.us-west-2.awstrack.me/L0/https:%2F%2Forder-help.us.samsung=
+.com%2Fhc%2Fen-us%2Farticles%2F4415639206931-Requesting-a-Refund-from-an-In=
+-Store-Purchase%3Fcid=3Deml-ecm-trnx-LineItemPickedUp/1/01010192c53c91f0-b0=
+b49671-0a73-417a-b8cd-48b9ec908ffc-000000/7RM-AYUenR_ppdohCUhyOAZSHXM=3D398=
+" style=3D"font-weight: bold; color: #283794; text-decoration: none;">Retur=
+n FAQ</a> </p> </td> </tr> </table>  <!-- TRADE IN FOOTER START --> <table =
+  bgcolor=3D"#f5f5f5"  cellpadding=3D"0"  cellspacing=3D"0"  border=3D"0"  =
+align=3D"center"  width=3D"100%"  style=3D"max-width: 640px; width: 100%; m=
+argin: 10px 0 30px 0" ><tr  ><td   align=3D"center" ><a   style=3D"display:=
+ block;"  target=3D"_blank"  href=3D"https://yxdf4kyd.r.us-west-2.awstrack.=
+me/L0/https:%2F%2Fshopsamsung.page.link%2F%3Flink=3Dhttps%253A%252F%252Fpla=
+y.google.com%252Fstore%252Fapps%252Fdetails%253Fid%253Dcom.samsung.ecomm%25=
+26referrer%253Dutm_source%25253Dsamsung%252526utm_medium%25253Demail%252526=
+utm_campaign%25253DFTO_Orderemail_06202024%2526iosparam%253Dsamsungestore%2=
+525253A%2525252F%2525252Fgototab%25252523tab%2525253D1%25252523utm_source%2=
+525253Dsamsung%25252523utm_medium%2525253Demail%25252523utm_campaign%252525=
+3D253DFTO_Orderemail_06202024%26utm_source=3Dsamsung%26utm_medium=3Demail%2=
+6utm_campaign=3DFTO_Orderemail_06202024%26apn=3Dcom.samsung.ecomm%26al=3Dsa=
+msungestore%253A%252F%252Fgototab%2523tab%253D1%2523utm_source%253Dsamsung%=
+2523utm_medium%253Demail%2523utm_campaign%253DFTO_Orderemail_06202024%26afl=
+=3Dhttps%253A%252F%252Fplay.google.com%252Fstore%252Fapps%252Fdetails%253Fi=
+d%253Dcom.samsung.ecomm%2526isi%253D1274679179%2526ibi%253Dcom.samsung.Shop=
+Samsung%2526ius%253Dsamsungestore%2526referrer%253Dutm_source%25253Dsamsung=
+%252526utm_medium%25253Demail%252526utm_campaign%25253DFTO_Orderemail_06202=
+024%2526efr%253D1/1/01010192c53c91f0-b0b49671-0a73-417a-b8cd-48b9ec908ffc-0=
+00000/mKPfqsfrVSB9_BsBvWI25n0l-wE=3D398" ><img   width=3D"640"  style=3D"di=
+splay: block; border: 0; max-width: 100%;"  alt=3D""  src=3D"https://image-=
+us.samsung.com/SamsungUS/ecom-email/2024-06-25-shop-app-banner.jpg" ></img>=
+</a></td></tr></table>       <table cellpadding=3D"0" cellspacing=3D"0" wid=
+th=3D"100%" border=3D"0" style=3D"max-width: 640px; width: 100%"> <tr>  <td=
+ style=3D"text-align: center; width: 33.33%; padding: 20px 0; border-right:=
+ solid 2px #ececec;"> <a href=3D"http://yxdf4kyd.r.us-west-2.awstrack.me/L0=
+/http:%2F%2Fwww.samsung.com%2Fus/1/01010192c53c91f0-b0b49671-0a73-417a-b8cd=
+-48b9ec908ffc-000000/zzuO8V3xIv_83Hpzpuh1_MCA_mg=3D398" style=3D"font-famil=
+y: 'SamsungOneLatinWeb', Arial, Tahoma, sans-serif; text-decoration: none; =
+font-size: 18px; text-transform: uppercase; color: #283794; font-weight: bo=
+ld;">Shop Online</a> </td> <td style=3D"text-align: center; width: 33.33%; =
+padding: 20px 0;"> <a href=3D"http://yxdf4kyd.r.us-west-2.awstrack.me/L0/ht=
+tp:%2F%2Fwww.samsung.com%2Fus%2Fsupport%2Fcustomer-services%2F/1/01010192c5=
+3c91f0-b0b49671-0a73-417a-b8cd-48b9ec908ffc-000000/WaqtXjIyI3JrT4rI5bROHrX6=
+09Q=3D398" style=3D"font-family: 'SamsungOneLatinWeb', Arial, Tahoma, sans-=
+serif; text-decoration: none; font-size: 18px; text-transform: uppercase; c=
+olor: #283794; font-weight: bold;">Contact Us</a> </td>  </tr> </table>  <t=
+able cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" border=3D"0" style=
+=3D"max-width: 640px; width: 100%;">  <tr> <td bgcolor=3D"#f2f2f2" align=3D=
+"center" valign=3D"top" style=3D"padding: 30px 20px;background-color: #f2f2=
+f2"> <table cellspacing=3D"0" cellpadding=3D"0" border=3D"0" width=3D"100%"=
+ style=3D"font-size: 12px; text-align: left; width: 100%; max-width: 600px"=
+> <tr> <td style=3D"text-align: left;font-family: sans-serif; font-size: 15=
+px; mso-height-rule:exactly; line-height: 20px; color: #333333;"> <a href=
+=3D"https://yxdf4kyd.r.us-west-2.awstrack.me/L0/https:%2F%2Fwww.facebook.co=
+m%2FSamsungUS/1/01010192c53c91f0-b0b49671-0a73-417a-b8cd-48b9ec908ffc-00000=
+0/f5LcFG1JqVI5vyXgMmWu3-ZQRcs=3D398" style=3D"width: 40px; margin-right: 10=
+px"><img src=3D"http://image-us.samsung.com/SamsungUS/ecom-email/icon-fb-bl=
+ack.png" alt=3D"Facebook" width=3D"40" alt=3D"" style=3D"border: 0; width: =
+40px; height: 40px;"></a> <a href=3D"https://yxdf4kyd.r.us-west-2.awstrack.=
+me/L0/https:%2F%2Ftwitter.com%2FSamsungUS/1/01010192c53c91f0-b0b49671-0a73-=
+417a-b8cd-48b9ec908ffc-000000/v_Cchw5y6rexSlXyqPSa41-1TUY=3D398" style=3D"w=
+idth: 40px; margin-right: 10px"><img src=3D"http://image-us.samsung.com/Sam=
+sungUS/ecom-email/icon-x-black.png" alt=3D"Twitter" width=3D"40" alt=3D"" s=
+tyle=3D"border: 0;width: 40px; height: 40px"></a> <a href=3D"https://yxdf4k=
+yd.r.us-west-2.awstrack.me/L0/https:%2F%2Fwww.youtube.com%2Fsamsungus/1/010=
+10192c53c91f0-b0b49671-0a73-417a-b8cd-48b9ec908ffc-000000/djsZ74xzhig1xLqE1=
+H_4KR7lQf4=3D398" style=3D"width: 40px; margin-right: 10px"><img src=3D"htt=
+p://image-us.samsung.com/SamsungUS/ecom-email/icon-youtube-black.png" alt=
+=3D"YouTube" width=3D"40" alt=3D"" style=3D"border: 0;width: 40px; height: =
+40px"></a> <a href=3D"http://yxdf4kyd.r.us-west-2.awstrack.me/L0/http:%2F%2=
+Finstagram.com%2Fsamsungusa%23/1/01010192c53c91f0-b0b49671-0a73-417a-b8cd-4=
+8b9ec908ffc-000000/5pBkg54qluexnuFBcSG41JAwkvg=3D398" style=3D"width: 40px;=
+ margin-right: 10px"><img src=3D"http://image-us.samsung.com/SamsungUS/ecom=
+-email/icon-instagram-black.png" alt=3D"Instagram" width=3D"40" alt=3D"" st=
+yle=3D"border: 0;width: 40px; height: 40px"></a> </td> </tr> </table> </td>=
+ </tr>  <tr> <td bgcolor=3D"#f2f2f2" align=3D"center" valign=3D"top" style=
+=3D"background-color: #f2f2f2; padding: 0 20px 30px; text-align: left; font=
+-family: 'SamsungOneLatinWeb', Arial, Tahoma, sans-serif; font-size: 12px; =
+mso-height-rule: exactly; color: #363636;"> <p class=3D"body-text" style=3D=
+"margin: 0; padding: 0; line-height: 18px">  Please do not reply to this em=
+ail. If you need to contact us with questions or feedback, please  <a href=
+=3D"http://yxdf4kyd.r.us-west-2.awstrack.me/L0/http:%2F%2Fwww.samsung.com%2=
+Fus%2Fsupport%2Fcustomer-services%2F/2/01010192c53c91f0-b0b49671-0a73-417a-=
+b8cd-48b9ec908ffc-000000/qfhVcbJDIThaRiQI-kddRlqVcdg=3D398" style=3D"color:=
+ #283794; text-decoration: none;">Contact Customer Services</a>. If you are=
+ planning to return an item, look over our <a href=3D"https://yxdf4kyd.r.us=
+-west-2.awstrack.me/L0/https:%2F%2Forder-help.us.samsung.com%2Fhc%2Fen-us%2=
+Farticles%2F4415639206931-Requesting-a-Refund-from-an-In-Store-Purchase/1/0=
+1010192c53c91f0-b0b49671-0a73-417a-b8cd-48b9ec908ffc-000000/QTsoW7sy8LinRYL=
+H3qFJNLbpwTQ=3D398" style=3D"color: #283794; text-decoration: none;">Return=
+ FAQ here</a>  <br> <br>       <!-- TERMS AND CONDITION - STARTS -->  <!-- =
+TERMS AND CONDITION - ENDS --> <a href=3D"http://yxdf4kyd.r.us-west-2.awstr=
+ack.me/L0/http:%2F%2Fwww.samsung.com%2Fus%2Fcommon%2Flegal.html/1/01010192c=
+53c91f0-b0b49671-0a73-417a-b8cd-48b9ec908ffc-000000/6XOoyUyMpcJ8hZf4Zn4l_K_=
+a9H0=3D398" style=3D"color: #283794; text-decoration: none;">Legal</a> | <a=
+ href=3D"http://yxdf4kyd.r.us-west-2.awstrack.me/L0/http:%2F%2Fwww.samsung.=
+com%2Fus%2Fcommon%2Fprivacy.html/1/01010192c53c91f0-b0b49671-0a73-417a-b8cd=
+-48b9ec908ffc-000000/3f5xfFfmz1-NHZboMKHLq0Axvuc=3D398" style=3D"color: #28=
+3794; text-decoration: none;">Privacy Policy</a> <br/> <br>&copy; 2024 Sams=
+ung Electronics America, Inc. Samsung is a registered trademark of Samsung =
+Electronics Co., Ltd. Use only in accordance with law. Other company and pr=
+oduct names mentioned may be trademarks of their respective owners. Screen =
+images simulated. Actual appearances may vary. <br /> <br />Samsung Electro=
+nics America <br />85 Challenger Road. <br /> Ridgefield Park, NJ 07660</p>=
+ </td> </tr> </table> <!-- TRADE IN FOOTER END --> </td> </tr> </table> <im=
+g alt=3D"" src=3D"https://yxdf4kyd.r.us-west-2.awstrack.me/I0/01010192c53c9=
+1f0-b0b49671-0a73-417a-b8cd-48b9ec908ffc-000000/c9qTlO-EdjZhUY2GOr2jPdteeWg=
+=3D398" style=3D"display: none; width: 1px; height: 1px;">
+</body> </html>
